@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IceMC - Your Frosty Minecraft Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Subtle background pattern */
+            background-image: radial-gradient(at 50% 0%, rgba(25, 25, 112, 0.2) 0%, transparent 70%),
+                              radial-gradient(at 0% 100%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(0, 0, 139, 0.1) 0%, transparent 50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        /* Basic styling for the copy button feedback */
+        .copy-success {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        /* Keyframe for subtle pulsate effect on IP */
+        @keyframes pulsate {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .animate-pulsate {
+            animation: pulsate 2s infinite ease-in-out;
+        }
+        /* Subtle glow for the main title */
+        .title-glow {
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.6), 0 0 20px rgba(0, 191, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 min-h-screen flex flex-col items-center py-8 px-4">
 
+    <header class="w-full max-w-4xl text-center mb-12">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight title-glow">
+            Welcome to <span class="text-blue-400">IceMC</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300">
+            Your ultimate destination for a frosty Minecraft adventure!
+        </p>
+    </header>
+
+    <main class="w-full max-w-4xl bg-gray-800/90 backdrop-blur-sm p-6 md:p-10 rounded-xl shadow-2xl border border-gray-700 transform transition-all duration-500 hover:scale-[1.005]">
+
+        <section class="mb-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-6">Join Our Server!</h2>
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <div class="bg-gray-700 p-4 rounded-lg shadow-inner flex items-center justify-between w-full sm:w-auto animate-pulsate">
+                    <span id="serverIp" class="text-2xl md:text-3xl font-mono text-white mr-4 select-all">
+                        play.icemc.online
+                    </span>
+                    <button id="copyIpButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 active:scale-95">
+                        Copy IP
+                    </button>
+                </div>
+            </div>
+            <p id="copyMessage" class="text-blue-300 mt-2 opacity-0 transition-opacity duration-300">Copied!</p>
+        </section>
+
+        <section class="mb-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-400 mb-6">Server Status</h2>
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg flex items-center justify-center space-x-4">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <p class="text-2xl text-white">Server is <span class="font-bold text-green-400">Online</span></p>
+                <p class="text-xl text-gray-300">(<span id="playerCount">25</span>/100 Players)</p>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-teal-400 mb-6 text-center">Server Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-white mb-3">❄️ Icy Survival</h3>
+                    <p class="text-gray-300">Brave the frozen biomes, build your stronghold, and thrive in our unique survival world.</p>
+                </div>
+                <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-white mb-3">🎨 Creative Frost</h3>
+                    <p class="text-gray-300">Unleash your creativity in a dedicated world with unlimited resources and a snowy canvas.</p>
+                </div>
+                <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-white mb-3">🎲 Arctic Minigames</h3>
+                    <p class="text-gray-300">Compete in thrilling minigames and participate in frosty server events for cool rewards!</p>
+                </div>
+                <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-white mb-3">🤝 Chilly Community</h3>
+                    <p class="text-gray-300">Join a vibrant and welcoming community of Minecraft enthusiasts. Make new friends!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-red-400 mb-6 text-center">Server Rules</h2>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 px-4">
+                <li>Be respectful to all players and staff.</li>
+                <li>No griefing or stealing.</li>
+                <li>No spamming or excessive use of caps.</li>
+                <li>No hacking, cheating, or exploiting bugs.</li>
+                <li>Have fun!</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 mb-6 text-center">How to Join</h2>
+            <ol class="list-decimal list-inside text-gray-300 space-y-2 px-4">
+                <li>Open Minecraft: Java Edition.</li>
+                <li>Click on 'Multiplayer'.</li>
+                <li>Click on 'Add Server'.</li>
+                <li>Enter "IceMC" as the Server Name.</li>
+                <li>Enter the IP address: <span class="font-bold text-white">play.icemc.online</span></li>
+                <li>Click 'Done' and then 'Join Server'!</li>
+            </ol>
+        </section>
+
+    </main>
+
+    <footer class="w-full max-w-4xl text-center mt-12 py-6 border-t border-gray-700 text-gray-400">
+        <p>&copy; 2025 IceMC. All rights reserved.</p>
+        <p class="mt-2">Made with ❤️ for the frosty Minecraft community.</p>
+    </footer>
+
+    <script>
+        document.getElementById('copyIpButton').addEventListener('click', function() {
+            const serverIp = document.getElementById('serverIp').textContent;
+            const copyMessage = document.getElementById('copyMessage');
+
+            // Use document.execCommand('copy') for better cross-browser compatibility in iframes
+            const tempInput = document.createElement('textarea');
+            tempInput.value = serverIp;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Show success message
+            copyMessage.classList.remove('opacity-0');
+            copyMessage.classList.add('opacity-100');
+            setTimeout(() => {
+                copyMessage.classList.remove('opacity-100');
+                copyMessage.classList.add('opacity-0');
+            }, 2000); // Hide after 2 seconds
+        });
+
+        // Placeholder for dynamic player count (can be updated via server-side logic)
+        // setInterval(() => {
+        //     const playerCountElement = document.getElementById('playerCount');
+        //     const currentPlayers = parseInt(playerCountElement.textContent);
+        //     const maxPlayers = 100;
+        //     // Simulate player count changing
+        //     const newPlayers = Math.floor(Math.random() * (maxPlayers / 2)) + 10; // Between 10 and 60
+        //     playerCountElement.textContent = newPlayers;
+        // }, 10000); // Update every 10 seconds (for demonstration)
+    </script>
+
+</body>
+</html>
