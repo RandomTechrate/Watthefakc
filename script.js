@@ -1,3 +1,10 @@
+// Firebase SDK imports (these will be loaded via script tags in HTML)
+// These lines are comments here to show what modules are needed.
+// import { initializeApp } from 'firebase/app';
+// import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+// import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+
+
 // Translations object containing all text for both English and Bulgarian
 const translations = {
     en: {
@@ -6,7 +13,7 @@ const translations = {
         rulesLink: "Rules",
         voteLink: "Vote",
         copyright: "&copy; 2025 IceMC. All rights reserved.",
-        accountLink: "Login / Register", // New translation key for nav link
+        accountLink: "Login / Register",
 
         // Index.html specific translations
         pageTitle: "IceMC - Your Frosty Minecraft Adventure",
@@ -27,10 +34,10 @@ const translations = {
         featureCreativeDesc: "Unleash your creativity in a dedicated world with unlimited resources and a snowy canvas.",
         featureMinigamesTitle: "🎲 Arctic Minigames",
         featureMinigamesDesc: "Compete in thrilling minigames and participate in frosty server events for cool rewards!",
-        featureEconomyTitle: "💰 Player Economy", // New feature
-        featureEconomyDesc: "Earn money, trade with other players, and build your fortune in our vibrant in-game economy.", // New feature
-        featureCustomPluginsTitle: "🛠️ Custom Plugins", // New feature
-        featureCustomPluginsDesc: "Enjoy unique gameplay mechanics and enhancements with our custom-developed plugins.", // New feature
+        featureEconomyTitle: "💰 Player Economy",
+        featureEconomyDesc: "Earn money, trade with other players, and build your fortune in our vibrant in-game economy.",
+        featureCustomPluginsTitle: "🛠️ Custom Plugins",
+        featureCustomPluginsDesc: "Enjoy unique gameplay mechanics and enhancements with our custom-developed plugins.",
         featureCommunityTitle: "🤝 Chilly Community",
         featureCommunityDesc: "Join a vibrant and welcoming community of Minecraft enthusiasts. Make new friends!",
         howToJoinTitle: "How to Join",
@@ -41,21 +48,38 @@ const translations = {
         step5: "Enter the IP address: play.icemc.online",
         step6: "Click 'Done' and then 'Join Server'!",
         footerTagline: "Made with ❤️ for the frosty Minecraft community.",
-        accountTitle: "Account & Community", // New section title
-        accountDescription: "Login or register to manage your account, track your stats, and connect with the IceMC community!", // New description
-        usernameLabel: "Username:", // Login/Register form labels
+
+        // Login/Register page translations (general)
+        loginPageTitle: "IceMC Login - Access Your Account",
+        registerPageTitle: "IceMC Register - Create Your Account",
+        loginTitle: "Login to IceMC",
+        registerTitle: "Register for",
+        loginHeaderDescription: "Access your account to manage your profile and connect with the community!",
+        registerHeaderDescription: "Create your account to join our frosty community!",
+        createAccountTitle: "Create Your Account",
+        usernameLabel: "Username:",
+        emailLabel: "Email:",
         passwordLabel: "Password:",
+        confirmPasswordLabel: "Confirm Password:",
         authErrorMessage: "Please fill in all fields.",
         loginButton: "Login",
         registerButton: "Register",
         loginSuccess: "Login successful for ",
         registerSuccess: "Registration successful for ",
-        invalidCredentials: "Invalid username or password.",
-        specificPasswordError: "Incorrect password for this username.",
+        invalidCredentials: "Invalid email or password.",
+        specificPasswordError: "Incorrect password for this username. Special users 'CargoVrum_' and 'Teicheto' must use 'top1'.",
+        emailInUse: "Email already in use. Please use a different email or login.",
+        weakPassword: "Password should be at least 6 characters.",
+        userNotFound: "User not found. Please check your email or register.",
+        wrongPassword: "Wrong password. Please try again.",
+        passwordsMismatch: "Passwords do not match.",
+        alreadyHaveAccount: "Already have an account?",
+        loginHere: "Login here",
+        dontHaveAccount: "Don't have an account?",
+        registerHere: "Register here",
 
 
         // Rules.html specific translations
-        rulesPageTitle: "IceMC Rules - Play Fair, Have Fun!",
         rulesText: "Server Rules",
         rulesHeaderDescription: "Ensuring a fair and fun experience for everyone!",
         generalRulesTitle: "General Rules",
@@ -93,7 +117,7 @@ const translations = {
         rulesLink: "Правила",
         voteLink: "Гласувай",
         copyright: "&copy; 2025 IceMC. Всички права запазени.",
-        accountLink: "Вход / Регистрация", // New translation key for nav link
+        accountLink: "Вход / Регистрация",
 
         // Index.html specific translations
         pageTitle: "IceMC - Вашето Мразовито Minecraft Приключение",
@@ -114,10 +138,10 @@ const translations = {
         featureCreativeDesc: "Развихрете въображението си в специален свят с неограничени ресурси и снежно платно.",
         featureMinigamesTitle: "🎲 Арктически Мини-игри",
         featureMinigamesDesc: "Състезавайте се във вълнуващи мини-игри и участвайте в мразовити сървърни събития за страхотни награди!",
-        featureEconomyTitle: "💰 Икономика на Играчите", // New feature
-        featureEconomyDesc: "Печелете пари, търгувайте с други играчи и изградете своето богатство в нашата жизнена икономика в играта.", // New feature
-        featureCustomPluginsTitle: "🛠️ Персонализирани Плъгини", // New feature
-        featureCustomPluginsDesc: "Насладете се на уникални механики на играта и подобрения с нашите персонализирани плъгини.", // New feature
+        featureEconomyTitle: "💰 Икономика на Играчите",
+        featureEconomyDesc: "Печелете пари, търгувайте с други играчи и изградете своето богатство в нашата жизнена икономика в играта.",
+        featureCustomPluginsTitle: "🛠️ Персонализирани Плъгини",
+        featureCustomPluginsDesc: "Насладете се на уникални механики на играта и подобрения с нашите персонализирани плъгини.",
         featureCommunityTitle: "🤝 Студена Общност",
         featureCommunityDesc: "Присъединете се към жизнена и гостоприемна общност от ентусиасти на Minecraft. Намерете нови приятели!",
         howToJoinTitle: "Как да се Присъедините",
@@ -128,20 +152,37 @@ const translations = {
         step5: "Въведете IP адреса: play.icemc.online",
         step6: "Кликнете 'Done' и след това 'Join Server'!",
         footerTagline: "Създадено с ❤️ за мразовитата Minecraft общност.",
-        accountTitle: "Акаунт и Общност", // New section title
-        accountDescription: "Влезте или се регистрирайте, за да управлявате акаунта си, да проследявате статистиката си и да се свързвате с общността на IceMC!", // New description
-        usernameLabel: "Потребителско име:", // Login/Register form labels
+
+        // Login/Register page translations (general)
+        loginPageTitle: "IceMC Вход - Достъп до Вашия Акаунт",
+        registerPageTitle: "IceMC Регистрация - Създайте Вашия Акаунт",
+        loginTitle: "Вход в IceMC",
+        registerTitle: "Регистрация за",
+        loginHeaderDescription: "Достъп до вашия акаунт, за да управлявате профила си и да се свържете с общността!",
+        registerHeaderDescription: "Създайте своя акаунт, за да се присъедините към нашата мразовита общност!",
+        createAccountTitle: "Създайте Вашия Акаунт",
+        usernameLabel: "Потребителско име:",
+        emailLabel: "Имейл:",
         passwordLabel: "Парола:",
+        confirmPasswordLabel: "Потвърдете паролата:",
         authErrorMessage: "Моля, попълнете всички полета.",
         loginButton: "Вход",
         registerButton: "Регистрация",
         loginSuccess: "Успешен вход за ",
         registerSuccess: "Успешна регистрация за ",
-        invalidCredentials: "Невалидно потребителско име или парола.",
-        specificPasswordError: "Грешна парола за това потребителско име.",
+        invalidCredentials: "Невалиден имейл или парола.",
+        specificPasswordError: "Грешна парола за това потребителско име. Специалните потребители 'CargoVrum_' и 'Teicheto' трябва да използват 'top1'.",
+        emailInUse: "Имейлът вече е в употреба. Моля, използвайте друг имейл или влезте.",
+        weakPassword: "Паролата трябва да е поне 6 символа.",
+        userNotFound: "Потребителят не е намерен. Моля, проверете имейла си или се регистрирайте.",
+        wrongPassword: "Грешна парола. Моля, опитайте отново.",
+        passwordsMismatch: "Паролите не съвпадат.",
+        alreadyHaveAccount: "Вече имате акаунт?",
+        loginHere: "Влезте тук",
+        dontHaveAccount: "Нямате акаунт?",
+        registerHere: "Регистрирайте се тук",
 
         // Rules.html specific translations
-        rulesPageTitle: "IceMC Правила - Играйте Честно, Забавлявайте се!",
         rulesText: "Правила на Сървъра",
         rulesHeaderDescription: "Осигуряване на честно и забавно преживяване за всички!",
         generalRulesTitle: "Общи Правила",
@@ -198,7 +239,7 @@ function setLanguage(lang) {
     localStorage.setItem('preferredLang', lang);
 }
 
-// Copy IP functionality
+// Copy IP functionality (only relevant for index.html)
 document.getElementById('copyIpButton')?.addEventListener('click', function() {
     const serverIp = document.getElementById('serverIp')?.textContent;
     const copyMessage = document.getElementById('copyMessage');
@@ -220,7 +261,7 @@ document.getElementById('copyIpButton')?.addEventListener('click', function() {
     }
 });
 
-// Function to fetch and update server status
+// Function to fetch and update server status (only relevant for index.html)
 async function fetchServerStatus() {
     const serverIp = "play.icemc.online";
     const apiUrl = `https://api.mcsrvstat.us/3/${serverIp}`;
@@ -233,7 +274,7 @@ async function fetchServerStatus() {
     const statusError = document.getElementById('statusError');
 
     if (!serverStatusText || !statusIndicator) {
-        return;
+        return; // Exit if not on index.html
     }
 
     const currentLang = localStorage.getItem('preferredLang') || 'en';
@@ -294,47 +335,39 @@ async function fetchServerStatus() {
     }
 }
 
-// Function to handle form submission (Login/Register) - Now moved to specific pages
-// This function is removed from here as it will be implemented on login.html and register.html
-
 // Function to create and append stars
 function createStars() {
     let starsContainer = document.querySelector('.stars');
-    // If the stars container doesn't exist, create it and append to body
     if (!starsContainer) {
         starsContainer = document.createElement('div');
         starsContainer.className = 'stars';
-        document.body.prepend(starsContainer); // Add as the first child to ensure it's behind other content
+        document.body.prepend(starsContainer);
     }
+    starsContainer.innerHTML = ''; // Clear existing stars
 
-    // Clear existing stars to prevent duplicates on re-calls if any
-    starsContainer.innerHTML = '';
-
-    const numberOfStars = 100; // Adjust as needed
-
+    const numberOfStars = 100;
     for (let i = 0; i < numberOfStars; i++) {
         const star = document.createElement('div');
         star.className = 'star';
-        const size = Math.random() * 3 + 1; // Random size between 1px and 4px
+        const size = Math.random() * 3 + 1;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
         star.style.left = `${Math.random() * 100}%`;
         star.style.top = `${Math.random() * 100}%`;
-        star.style.animationDelay = `${Math.random() * 10}s`; // Random delay for staggered animation
-        star.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random duration for varied speed
+        star.style.animationDelay = `${Math.random() * 10}s`;
+        star.style.animationDuration = `${Math.random() * 5 + 5}s`;
         starsContainer.appendChild(star);
     }
 }
 
 
 // Event Listeners for flags
-// Using optional chaining (?) to prevent errors if elements don't exist on a specific page
 document.getElementById('lang-en')?.addEventListener('click', () => setLanguage('en'));
 document.getElementById('lang-bg')?.addEventListener('click', () => setLanguage('bg'));
 
 // Load preferred language and fetch status on page load
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLang') || 'en'; // Default to English
+    const savedLang = localStorage.getItem('preferredLang') || 'en';
     setLanguage(savedLang);
 
     // Only fetch server status if on the index.html page (where status elements exist)
@@ -342,5 +375,5 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchServerStatus();
         setInterval(fetchServerStatus, 30000); // Refresh status every 30 seconds
     }
-    createStars(); // Create stars on every page load for any HTML file
+    createStars(); // Create stars on every page load
 });
