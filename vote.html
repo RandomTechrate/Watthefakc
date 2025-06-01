@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IceMC Vote - Support Our Server!</title>
+    <title data-lang-key="pageTitle">IceMC Vote - Support Our Server!</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -60,21 +60,41 @@
             transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
+
+        /* Flag icon styling */
+        .flag-icon {
+            width: 32px; /* Adjust size as needed */
+            height: 24px; /* Adjust size as needed */
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .flag-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 min-h-screen flex flex-col items-center py-8 px-4">
 
     <header class="w-full max-w-4xl text-center mb-12 animate-fadeInUp" style="animation-delay: 0.1s;">
-        <nav class="mb-8 p-4 bg-gray-800/80 rounded-xl shadow-lg flex justify-center space-x-8 border border-gray-700">
-            <a href="index.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Home</a>
-            <a href="rules.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Rules</a>
-            <a href="vote.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Vote</a>
+        <nav class="mb-8 p-4 bg-gray-800/80 rounded-xl shadow-lg flex justify-center space-x-8 border border-gray-700 relative">
+            <a href="index.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="homeLink">Home</a>
+            <a href="rules.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="rulesLink">Rules</a>
+            <a href="vote.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="voteLink">Vote</a>
+
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex space-x-2">
+                <img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" alt="English Flag" class="flag-icon" id="lang-en" title="Switch to English">
+                <img src="https://flagcdn.com/w20/bg.png" srcset="https://flagcdn.com/w40/bg.png 2x" width="20" alt="Bulgarian Flag" class="flag-icon" id="lang-bg" title="Switch to Bulgarian">
+            </div>
         </nav>
 
         <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight title-glow">
-            Support IceMC: <span class="text-purple-400">Vote!</span>
+            <span data-lang-key="supportText">Support IceMC:</span> <span class="text-purple-400" data-lang-key="voteText">Vote!</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-300">
+        <p class="text-xl md:text-2xl text-gray-300" data-lang-key="headerDescription">
             Help us grow and reach more players by voting for our server!
         </p>
     </header>
@@ -82,33 +102,101 @@
     <main class="w-full max-w-4xl bg-gray-800/90 backdrop-blur-sm p-6 md:p-10 rounded-xl shadow-2xl border border-gray-700 transform transition-all duration-500 hover:scale-[1.005]">
 
         <section id="vote-content" class="mb-10 animate-fadeInUp" style="animation-delay: 0.3s;">
-            <h2 class="text-3xl md:text-4xl font-bold text-purple-400 mb-6 text-center">Choose Your Voting Site</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-purple-400 mb-6 text-center" data-lang-key="chooseVotingSite">Choose Your Voting Site</h2>
             <div class="bg-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center space-y-6 border border-gray-600 card-hover-effect">
-                <p class="text-xl text-gray-300 text-center">Each vote helps boost our server's visibility and brings in new players. Thank you for your support!</p>
+                <p class="text-xl text-gray-300 text-center" data-lang-key="voteDescription">Each vote helps boost our server's visibility and brings in new players. Thank you for your support!</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
-                    <a href="http://bit.ly/4knEt12" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl">
+                    <a href="http://bit.ly/4knEt12" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl" data-lang-key="voteMinecraftMp">
                         Vote on Minecraft-MP.com
                     </a>
-                    <a href="https://minecraftservers.org/vote/674479" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl">
+                    <a href="https://minecraftservers.org/vote/674479" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl" data-lang-key="voteMinecraftServersOrg">
                         Vote on minecraftservers.org
                     </a>
-                    <a href="https://best-minecraft-servers.co/server-icemc-network.29072" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl">
+                    <a href="https://best-minecraft-servers.co/server-icemc-network.29072" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl" data-lang-key="voteBestMinecraftServers">
                         Vote on Best Minecraft Servers
                     </a>
-                    <a href="https://top-mc-servers.net/server/487#vote" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl">
+                    <a href="https://top-mc-servers.net/server/487#vote" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl" data-lang-key="voteTopMcServers">
                         Vote on top-mc-servers.net
                     </a>
                 </div>
-                <p class="text-sm text-gray-500 mt-4 text-center">You can vote on each site once every 24 hours.</p>
+                <p class="text-sm text-gray-500 mt-4 text-center" data-lang-key="voteFrequency">You can vote on each site once every 24 hours.</p>
             </div>
         </section>
 
     </main>
 
     <footer class="w-full max-w-4xl text-center mt-12 py-6 border-t border-gray-700 text-gray-400 animate-fadeInUp" style="animation-delay: 0.5s;">
-        <p>&copy; 2025 IceMC. All rights reserved.</p>
-        <p class="mt-2">Thank you for supporting IceMC!</p>
+        <p data-lang-key="copyright">&copy; 2025 IceMC. All rights reserved.</p>
+        <p class="mt-2" data-lang-key="footerThanks">Thank you for supporting IceMC!</p>
     </footer>
+
+    <script>
+        const translations = {
+            en: {
+                pageTitle: "IceMC Vote - Support Our Server!",
+                homeLink: "Home",
+                rulesLink: "Rules",
+                voteLink: "Vote",
+                supportText: "Support IceMC:",
+                voteText: "Vote!",
+                headerDescription: "Help us grow and reach more players by voting for our server!",
+                chooseVotingSite: "Choose Your Voting Site",
+                voteDescription: "Each vote helps boost our server's visibility and brings in new players. Thank you for your support!",
+                voteMinecraftMp: "Vote on Minecraft-MP.com",
+                voteMinecraftServersOrg: "Vote on minecraftservers.org",
+                voteBestMinecraftServers: "Vote on Best Minecraft Servers",
+                voteTopMcServers: "Vote on top-mc-servers.net",
+                voteFrequency: "You can vote on each site once every 24 hours.",
+                copyright: "&copy; 2025 IceMC. All rights reserved.",
+                footerThanks: "Thank you for supporting IceMC!"
+            },
+            bg: {
+                pageTitle: "IceMC Гласуване - Подкрепете Нашия Сървър!",
+                homeLink: "Начало",
+                rulesLink: "Правила",
+                voteLink: "Гласувай",
+                supportText: "Подкрепете IceMC:",
+                voteText: "Гласувай!",
+                headerDescription: "Помогнете ни да растем и да достигнем до повече играчи, като гласувате за нашия сървър!",
+                chooseVotingSite: "Изберете Вашия Сайт за Гласуване",
+                voteDescription: "Всеки глас помага за увеличаване на видимостта на нашия сървър и привлича нови играчи. Благодарим ви за подкрепата!",
+                voteMinecraftMp: "Гласувайте в Minecraft-MP.com",
+                voteMinecraftServersOrg: "Гласувайте в minecraftservers.org",
+                voteBestMinecraftServers: "Гласувайте в Best Minecraft Servers",
+                voteTopMcServers: "Гласувайте в top-mc-servers.net",
+                voteFrequency: "Можете да гласувате на всеки сайт веднъж на всеки 24 часа.",
+                copyright: "&copy; 2025 IceMC. Всички права запазени.",
+                footerThanks: "Благодарим ви, че подкрепяте IceMC!"
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update text content
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Store preference
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Event Listeners for flags
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-bg').addEventListener('click', () => setLanguage('bg'));
+
+        // Load preferred language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'en'; // Default to English
+            setLanguage(savedLang);
+        });
+    </script>
 
 </body>
 </html>
