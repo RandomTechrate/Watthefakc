@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IceMC Vote - Support Our Server!</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Enhanced background with multiple gradients and subtle animation */
+            background-image:
+                radial-gradient(at 20% 80%, rgba(0, 100, 200, 0.15) 0%, transparent 50%),
+                radial-gradient(at 80% 20%, rgba(0, 50, 150, 0.15) 0%, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(0, 191, 255, 0.05) 0%, transparent 70%);
+            background-size: 300% 300%; /* Larger background for animation */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            animation: backgroundPan 60s linear infinite alternate; /* Slow, subtle pan effect */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        /* Keyframe for background panning */
+        @keyframes backgroundPan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Subtle glow for the main title */
+        .title-glow {
+            text-shadow: 0 0 15px rgba(0, 191, 255, 0.8), 0 0 30px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Fade in and slide up animation for sections */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; /* Hidden by default, revealed by animation */
+        }
+
+        /* Button pop effect */
+        .button-pop:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 5px rgba(0, 191, 255, 0.7);
+        }
+
+        /* Card hover effect */
+        .card-hover-effect:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 min-h-screen flex flex-col items-center py-8 px-4">
+
+    <header class="w-full max-w-4xl text-center mb-12 animate-fadeInUp" style="animation-delay: 0.1s;">
+        <nav class="mb-8 p-4 bg-gray-800/80 rounded-xl shadow-lg flex justify-center space-x-8 border border-gray-700">
+            <a href="index.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Home</a>
+            <a href="rules.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Rules</a>
+            <a href="vote.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Vote</a>
+        </nav>
+
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight title-glow">
+            Support IceMC: <span class="text-purple-400">Vote!</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300">
+            Help us grow and reach more players by voting for our server!
+        </p>
+    </header>
+
+    <main class="w-full max-w-4xl bg-gray-800/90 backdrop-blur-sm p-6 md:p-10 rounded-xl shadow-2xl border border-gray-700 transform transition-all duration-500 hover:scale-[1.005]">
+
+        <section id="vote-content" class="mb-10 animate-fadeInUp" style="animation-delay: 0.3s;">
+            <h2 class="text-3xl md:text-4xl font-bold text-purple-400 mb-6 text-center">Choose Your Voting Site</h2>
+            <div class="bg-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center space-y-6 border border-gray-600 card-hover-effect">
+                <p class="text-xl text-gray-300 text-center">Each vote helps boost our server's visibility and brings in new players. Thank you for your support!</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
+                    <a href="https://topg.org/minecraft-servers/server-666324" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl">
+                        Vote on TopG
+                    </a>
+                    <a href="https://minecraft-server.net/vote/icemc/" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl">
+                        Vote on Minecraft-Server.net
+                    </a>
+                    <a href="https://minecraftservers.org/vote/icemc" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl">
+                        Vote on MinecraftServers.org
+                    </a>
+                    <a href="https://www.planetminecraft.com/server/icemc/vote/" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 button-pop text-center text-2xl">
+                        Vote on Planet Minecraft
+                    </a>
+                    </div>
+                <p class="text-sm text-gray-500 mt-4 text-center">You can vote on each site once every 24 hours.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full max-w-4xl text-center mt-12 py-6 border-t border-gray-700 text-gray-400 animate-fadeInUp" style="animation-delay: 0.5s;">
+        <p>&copy; 2025 IceMC. All rights reserved.</p>
+        <p class="mt-2">Thank you for supporting IceMC!</p>
+    </footer>
+
+</body>
+</html>
