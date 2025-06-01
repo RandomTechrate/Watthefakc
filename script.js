@@ -269,8 +269,16 @@ async function fetchServerStatus() {
 
 // Function to create and append stars
 function createStars() {
-    const starsContainer = document.querySelector('.stars');
-    if (!starsContainer) return; // Exit if stars container not found
+    let starsContainer = document.querySelector('.stars');
+    // If the stars container doesn't exist, create it and append to body
+    if (!starsContainer) {
+        starsContainer = document.createElement('div');
+        starsContainer.className = 'stars';
+        document.body.prepend(starsContainer); // Add as the first child to ensure it's behind other content
+    }
+
+    // Clear existing stars to prevent duplicates on re-calls if any
+    starsContainer.innerHTML = '';
 
     const numberOfStars = 100; // Adjust as needed
 
@@ -290,6 +298,7 @@ function createStars() {
 
 
 // Event Listeners for flags
+// Using optional chaining (?) to prevent errors if elements don't exist on a specific page
 document.getElementById('lang-en')?.addEventListener('click', () => setLanguage('en'));
 document.getElementById('lang-bg')?.addEventListener('click', () => setLanguage('bg'));
 
@@ -297,10 +306,11 @@ document.getElementById('lang-bg')?.addEventListener('click', () => setLanguage(
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLang') || 'en'; // Default to English
     setLanguage(savedLang);
+
     // Only fetch server status if on the index.html page (where status elements exist)
     if (document.getElementById('serverStatusText')) {
         fetchServerStatus();
         setInterval(fetchServerStatus, 30000); // Refresh status every 30 seconds
     }
-    createStars(); // Create stars on every page load
+    createStars(); // Create stars on every page load for any HTML file
 });
