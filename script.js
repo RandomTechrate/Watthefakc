@@ -6,6 +6,7 @@ const translations = {
         rulesLink: "Rules",
         voteLink: "Vote",
         copyright: "&copy; 2025 IceMC. All rights reserved.",
+        accountLink: "Login / Register", // New translation key for nav link
 
         // Index.html specific translations
         pageTitle: "IceMC - Your Frosty Minecraft Adventure",
@@ -26,6 +27,10 @@ const translations = {
         featureCreativeDesc: "Unleash your creativity in a dedicated world with unlimited resources and a snowy canvas.",
         featureMinigamesTitle: "🎲 Arctic Minigames",
         featureMinigamesDesc: "Compete in thrilling minigames and participate in frosty server events for cool rewards!",
+        featureEconomyTitle: "💰 Player Economy", // New feature
+        featureEconomyDesc: "Earn money, trade with other players, and build your fortune in our vibrant in-game economy.", // New feature
+        featureCustomPluginsTitle: "🛠️ Custom Plugins", // New feature
+        featureCustomPluginsDesc: "Enjoy unique gameplay mechanics and enhancements with our custom-developed plugins.", // New feature
         featureCommunityTitle: "🤝 Chilly Community",
         featureCommunityDesc: "Join a vibrant and welcoming community of Minecraft enthusiasts. Make new friends!",
         howToJoinTitle: "How to Join",
@@ -36,27 +41,31 @@ const translations = {
         step5: "Enter the IP address: play.icemc.online",
         step6: "Click 'Done' and then 'Join Server'!",
         footerTagline: "Made with ❤️ for the frosty Minecraft community.",
+        accountTitle: "Account & Community", // New section title
+        accountDescription: "Login or register to manage your account, track your stats, and connect with the IceMC community!", // New description
+        usernameLabel: "Username:", // Login/Register form labels
+        passwordLabel: "Password:",
+        authErrorMessage: "Please fill in all fields.",
+        loginButton: "Login",
+        registerButton: "Register",
 
         // Rules.html specific translations
         rulesPageTitle: "IceMC Rules - Play Fair, Have Fun!",
+        rulesText: "Server Rules",
         rulesHeaderDescription: "Ensuring a fair and fun experience for everyone!",
         generalRulesTitle: "General Rules",
-        rule1: "Respect Others: Treat all players and staff with respect. Harassment, discrimination, or hate speech will not be tolerated.",
-        rule2: "No Griefing or Stealing: Do not destroy or steal from other players' builds or chests. This applies to all game modes unless explicitly stated otherwise.",
-        rule3: "No Spamming or Excessive Caps: Keep chat clean and readable. Avoid repetitive messages or using all capital letters.",
-        rule4: "No Hacking, Cheating, or Exploiting: Any form of unfair advantage through unauthorized modifications, client hacks, or bug exploitation is strictly forbidden.",
-        rule5: "No Advertising: Do not advertise other servers, websites, or products in chat or through builds.",
-        rule6: "Keep it Family-Friendly: Maintain appropriate language and content. No NSFW or offensive material.",
-        rule7: "Follow Staff Instructions: Server staff are here to ensure a positive environment. Their decisions are final.",
-        rule8: "Have Fun: While rules are important, remember the main goal is to enjoy your time on IceMC!",
+        rule1: "<strong>Respect Others:</strong> Treat all players and staff with respect. Harassment, discrimination, or hate speech will not be tolerated.",
+        rule2: "<strong>No Griefing or Stealing:</strong> Do not destroy or steal from other players' builds or chests. This applies to all game modes unless explicitly stated otherwise.",
+        rule3: "<strong>No Spamming or Excessive Caps:</strong> Keep chat clean and readable. Avoid repetitive messages or using all capital letters.",
+        rule4: "<strong>No Hacking, Cheating, or Exploiting:</strong> Any form of unfair advantage through unauthorized modifications, client hacks, or bug exploitation is strictly forbidden.",
+        rule5: "<strong>No Advertising:</strong> Do not advertise other servers, websites, or products in chat or through builds.",
+        rule6: "<strong>Keep it Family-Friendly:</strong> Maintain appropriate language and content. No NSFW or offensive material.",
+        rule7: "<strong>Follow Staff Instructions:</strong> Server staff are here to ensure a positive environment. Their decisions are final.",
+        rule8: "<strong>Have Fun:</strong> While rules are important, remember the main goal is to enjoy your time on IceMC!",
         survivalRulesTitle: "Survival Specific Rules",
-        survivalRule1: "Claim Your Land: Use land claiming plugins to protect your builds. Unclaimed builds are vulnerable.",
-        survivalRule2: "No Trapping: Do not create traps that intentionally kill or harm other players without their consent.",
-        survivalRule3: "Resource Gathering: Be mindful of resource depletion. Avoid leaving floating trees or ugly holes.",
-        creativeRulesTitle: "Creative Specific Rules",
-        creativeRule1: "Build Appropriately: All builds must be appropriate for all ages and not offensive.",
-        creativeRule2: "No Lag Machines: Do not create contraptions designed to intentionally lag the server.",
-        creativeRule3: "Respect Plots: Do not build on or interfere with other players' plots without permission.",
+        survivalRule1: "<strong>Claim Your Land:</strong> Use land claiming plugins to protect your builds. Unclaimed builds are vulnerable.",
+        survivalRule2: "<strong>No Trapping:</strong> Do not create traps that intentionally kill or harm other players without their consent.",
+        survivalRule3: "<strong>Resource Gathering:</strong> Be mindful of resource depletion. Avoid leaving floating trees or ugly holes.",
         rulesFooterTagline: "Play fair, build epic, and have fun!",
 
         // Vote.html specific translations
@@ -79,6 +88,7 @@ const translations = {
         rulesLink: "Правила",
         voteLink: "Гласувай",
         copyright: "&copy; 2025 IceMC. Всички права запазени.",
+        accountLink: "Вход / Регистрация", // New translation key for nav link
 
         // Index.html specific translations
         pageTitle: "IceMC - Вашето Мразовито Minecraft Приключение",
@@ -99,6 +109,10 @@ const translations = {
         featureCreativeDesc: "Развихрете въображението си в специален свят с неограничени ресурси и снежно платно.",
         featureMinigamesTitle: "🎲 Арктически Мини-игри",
         featureMinigamesDesc: "Състезавайте се във вълнуващи мини-игри и участвайте в мразовити сървърни събития за страхотни награди!",
+        featureEconomyTitle: "💰 Икономика на Играчите", // New feature
+        featureEconomyDesc: "Печелете пари, търгувайте с други играчи и изградете своето богатство в нашата жизнена икономика в играта.", // New feature
+        featureCustomPluginsTitle: "🛠️ Персонализирани Плъгини", // New feature
+        featureCustomPluginsDesc: "Насладете се на уникални механики на играта и подобрения с нашите персонализирани плъгини.", // New feature
         featureCommunityTitle: "🤝 Студена Общност",
         featureCommunityDesc: "Присъединете се към жизнена и гостоприемна общност от ентусиасти на Minecraft. Намерете нови приятели!",
         howToJoinTitle: "Как да се Присъедините",
@@ -109,27 +123,31 @@ const translations = {
         step5: "Въведете IP адреса: play.icemc.online",
         step6: "Кликнете 'Done' и след това 'Join Server'!",
         footerTagline: "Създадено с ❤️ за мразовитата Minecraft общност.",
+        accountTitle: "Акаунт и Общност", // New section title
+        accountDescription: "Влезте или се регистрирайте, за да управлявате акаунта си, да проследявате статистиката си и да се свързвате с общността на IceMC!", // New description
+        usernameLabel: "Потребителско име:", // Login/Register form labels
+        passwordLabel: "Парола:",
+        authErrorMessage: "Моля, попълнете всички полета.",
+        loginButton: "Вход",
+        registerButton: "Регистрация",
 
         // Rules.html specific translations
         rulesPageTitle: "IceMC Правила - Играйте Честно, Забавлявайте се!",
+        rulesText: "Правила на Сървъра",
         rulesHeaderDescription: "Осигуряване на честно и забавно преживяване за всички!",
         generalRulesTitle: "Общи Правила",
-        rule1: "Уважавайте другите: Отнасяйте се към всички играчи и персонал с уважение. Тормоз, дискриминация или език на омразата няма да бъдат толерирани.",
-        rule2: "Без грийфинг или кражба: Не унищожавайте и не крадете от постройките или сандъците на други играчи. Това важи за всички режими на игра, освен ако изрично не е посочено друго.",
-        rule3: "Без спам или прекомерни главни букви: Поддържайте чата чист и четим. Избягвайте повтарящи се съобщения или използването на само главни букви.",
-        rule4: "Без хакове, чийтове или експлойти: Всяка форма на нечестно предимство чрез неоторизирани модификации, клиентски хакове или експлоатация на бъгове е строго забранена.",
-        rule5: "Без реклама: Не рекламирайте други сървъри, уебсайтове или продукти в чата или чрез постройки.",
-        rule6: "Поддържайте го подходящо за семейството: Поддържайте подходящ език и съдържание. Без неподходящи или обидни материали.",
-        rule7: "Следвайте инструкциите на персонала: Персоналът на сървъра е тук, за да осигури положителна среда. Техните решения са окончателни.",
-        rule8: "Забавлявайте се: Въпреки че правилата са важни, не забравяйте, че основната цел е да се насладите на времето си в IceMC!",
+        rule1: "<strong>Уважавайте другите:</strong> Отнасяйте се към всички играчи и персонал с уважение. Тормоз, дискриминация или език на омразата няма да бъдат толерирани.",
+        rule2: "<strong>Без грийфинг или кражба:</strong> Не унищожавайте и не крадете от постройките или сандъците на други играчи. Това важи за всички режими на игра, освен ако изрично не е посочено друго.",
+        rule3: "<strong>Без спам или прекомерни главни букви:</strong> Поддържайте чата чист и четим. Избягвайте повтарящи се съобщения или използването на само главни букви.",
+        rule4: "<strong>Без хакове, чийтове или експлойти:</strong> Всяка форма на нечестно предимство чрез неоторизирани модификации, клиентски хакове или експлоатация на бъгове е строго забранена.",
+        rule5: "<strong>Без реклама:</strong> Не рекламирайте други сървъри, уебсайтове или продукти в чата или чрез постройки.",
+        rule6: "<strong>Поддържайте го подходящо за семейството:</strong> Поддържайте подходящ език и съдържание. Без неподходящи или обидни материали.",
+        rule7: "<strong>Следвайте инструкциите на персонала:</strong> Персоналът на сървъра е тук, за да осигури положителна среда. Техните решения са окончателни.",
+        rule8: "<strong>Забавлявайте се:</strong> Въпреки че правилата са важни, не забравяйте, че основната цел е да се насладите на времето си в IceMC!",
         survivalRulesTitle: "Правила за Оцеляване",
-        survivalRule1: "Заявете земята си: Използвайте плъгини за заявяване на земя, за да защитите постройките си. Незаявените постройки са уязвими.",
-        survivalRule2: "Без капани: Не създавайте капани, които умишлено убиват или нараняват други играчи без тяхното съгласие.",
-        survivalRule3: "Събиране на ресурси: Внимавайте за изчерпването на ресурсите. Избягвайте да оставяте плаващи дървета или грозни дупки.",
-        creativeRulesTitle: "Правила за Творчески Режим",
-        creativeRule1: "Стройте подходящо: Всички постройки трябва да са подходящи за всички възрасти и да не са обидни.",
-        creativeRule2: "Без машини за лаг: Не създавайте приспособления, предназначени умишлено да забавят сървъра.",
-        creativeRule3: "Уважавайте парцелите: Не стройте върху или не пречете на парцелите на други играчи без разрешение.",
+        survivalRule1: "<strong>Заявете земята си:</strong> Използвайте плъгини за заявяване на земя, за да защитите постройките си. Незаявените постройки са уязвими.",
+        survivalRule2: "<strong>Без капани:</strong> Не създавайте капани, които умишлено убиват или нараняват други играчи без тяхното съгласие.",
+        survivalRule3: "<strong>Събиране на ресурси:</strong> Внимавайте за изчерпването на ресурсите. Избягвайте да оставяте плаващи дървета или грозни дупки.",
         rulesFooterTagline: "Играйте честно, стройте епично и се забавлявайте!",
 
         // Vote.html specific translations
@@ -150,22 +168,24 @@ const translations = {
 
 // Function to apply translations based on the selected language
 function setLanguage(lang) {
-    // Update text content for elements with data-lang-key
     document.querySelectorAll('[data-lang-key]').forEach(element => {
         const key = element.getAttribute('data-lang-key');
-        // Get translations for the current language
         const currentTranslations = translations[lang];
 
         if (currentTranslations && currentTranslations[key]) {
             if (element.tagName === 'TITLE') {
                 document.title = currentTranslations[key];
             } else {
-                element.textContent = currentTranslations[key];
+                // For strong tags within list items, ensure innerHTML is used
+                if (element.tagName === 'STRONG') {
+                    element.innerHTML = currentTranslations[key];
+                } else {
+                    element.textContent = currentTranslations[key];
+                }
             }
         }
     });
 
-    // Store the preferred language in local storage
     localStorage.setItem('preferredLang', lang);
 }
 
@@ -203,7 +223,6 @@ async function fetchServerStatus() {
     const motdElement = document.getElementById('motd');
     const statusError = document.getElementById('statusError');
 
-    // Only proceed if elements exist (i.e., on index.html)
     if (!serverStatusText || !statusIndicator) {
         return;
     }
@@ -263,9 +282,52 @@ async function fetchServerStatus() {
         statusIndicator.innerHTML = `
             <span class="relative inline-flex rounded-full h-5 w-5 bg-red-500"></span>
         `;
-        if (statusError) statusError.classList.remove('hidden');
     }
 }
+
+// Function to handle form submission (Login/Register)
+document.getElementById('authForm')?.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const authMessage = document.getElementById('authMessage');
+
+    const username = usernameInput?.value.trim();
+    const password = passwordInput?.value.trim();
+
+    if (!username || !password) {
+        if (authMessage) {
+            authMessage.textContent = translations[localStorage.getItem('preferredLang') || 'en'].authErrorMessage;
+            authMessage.classList.remove('hidden');
+        }
+        return;
+    } else {
+        if (authMessage) {
+            authMessage.classList.add('hidden');
+        }
+    }
+
+    // This is where you would integrate with a backend authentication system (e.g., Firebase, custom API)
+    // For now, we'll just simulate a successful action.
+    const isRegister = event.submitter?.id === 'registerButton';
+    const action = isRegister ? 'Register' : 'Login';
+
+    console.log(`${action} attempt for username: ${username}, password: ${password}`);
+
+    // Simulate API call
+    setTimeout(() => {
+        if (authMessage) {
+            authMessage.classList.remove('hidden', 'text-red-400');
+            authMessage.classList.add('text-green-400');
+            authMessage.textContent = `${action} successful for ${username}! (Simulated)`;
+        }
+        // Clear form fields
+        if (usernameInput) usernameInput.value = '';
+        if (passwordInput) passwordInput.value = '';
+    }, 1000);
+});
+
 
 // Function to create and append stars
 function createStars() {
