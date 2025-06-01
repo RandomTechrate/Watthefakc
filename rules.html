@@ -3,23 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IceMC Rules - Play Fair, Have Fun!</title>
+    <title data-lang-key="rulesPageTitle">IceMC Rules - Play Fair, Have Fun!</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for the Inter font */
         body {
             font-family: 'Inter', sans-serif;
-            /* Enhanced background with multiple gradients and subtle animation */
-            background-image:
-                radial-gradient(at 20% 80%, rgba(0, 100, 200, 0.15) 0%, transparent 50%),
-                radial-gradient(at 80% 20%, rgba(0, 50, 150, 0.15) 0%, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(0, 191, 255, 0.05) 0%, transparent 70%);
-            background-size: 300% 300%; /* Larger background for animation */
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            animation: backgroundPan 60s linear infinite alternate; /* Slow, subtle pan effect */
-            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+            background-color: #1a202c; /* Base dark background */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative; /* For absolute positioning of stars */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 2rem; /* Space for footer */
+        }
+
+        /* Starry Background Effect */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1; /* Send to background */
+            background: transparent;
+            animation: twinkle 120s linear infinite;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fadeAndMove 10s infinite ease-in-out;
         }
 
         /* Keyframe for background panning */
@@ -49,66 +68,98 @@
             opacity: 0; /* Hidden by default, revealed by animation */
         }
 
+        /* Button pop effect */
+        .button-pop:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 5px rgba(0, 191, 255, 0.7);
+        }
+
         /* Card hover effect */
         .card-hover-effect:hover {
             transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
+
+        /* Flag icon styling */
+        .flag-icon {
+            width: 32px; /* Adjust size as needed */
+            height: 24px; /* Adjust size as needed */
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .flag-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Gradient for titles */
+        .text-gradient-purple-blue {
+            background: linear-gradient(to right, #8B5CF6, #4F46E5); /* Purple to Indigo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Star animation */
+        @keyframes fadeAndMove {
+            0% { opacity: 0; transform: translateY(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(100vh); } /* Stars move downwards */
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 min-h-screen flex flex-col items-center py-8 px-4">
 
+    <div class="stars"></div>
+
     <header class="w-full max-w-4xl text-center mb-12 animate-fadeInUp" style="animation-delay: 0.1s;">
-        <nav class="mb-8 p-4 bg-gray-800/80 rounded-xl shadow-lg flex justify-center space-x-8 border border-gray-700">
-            <a href="index.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Home</a>
-            <a href="rules.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Rules</a>
-            <a href="vote.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Vote</a>
+        <nav class="mb-8 p-4 bg-gray-800/80 rounded-xl shadow-lg flex justify-center space-x-8 border border-gray-700 relative">
+            <a href="index.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="homeLink">Home</a>
+            <a href="rules.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="rulesLink">Rules</a>
+            <a href="vote.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="voteLink">Vote</a>
+
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex space-x-2">
+                <img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" alt="English Flag" class="flag-icon" id="lang-en" title="Switch to English">
+                <img src="https://flagcdn.com/w20/bg.png" srcset="https://flagcdn.com/w40/bg.png 2x" width="20" alt="Bulgarian Flag" class="flag-icon" id="lang-bg" title="Switch to Bulgarian">
+            </div>
         </nav>
 
         <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight title-glow">
-            IceMC <span class="text-red-400">Server Rules</span>
+            IceMC <span class="text-gradient-purple-blue" data-lang-key="rulesText">Server Rules</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-300">
+        <p class="text-xl md:text-2xl text-gray-300" data-lang-key="rulesHeaderDescription">
             Ensuring a fair and fun experience for everyone!
         </p>
     </header>
 
     <main class="w-full max-w-4xl bg-gray-800/90 backdrop-blur-sm p-6 md:p-10 rounded-xl shadow-2xl border border-gray-700 transform transition-all duration-500 hover:scale-[1.005]">
 
-        <section id="rules-content" class="mb-10 animate-fadeInUp" style="animation-delay: 0.3s;">
-            <h2 class="text-3xl md:text-4xl font-bold text-red-400 mb-6 text-center">General Rules</h2>
+        <section id="general-rules" class="mb-10 animate-fadeInUp" style="animation-delay: 0.3s;">
+            <h2 class="text-3xl md:text-4xl font-bold text-red-400 mb-6 text-center" data-lang-key="generalRulesTitle">General Rules</h2>
             <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 card-hover-effect">
                 <ul class="list-disc list-inside text-gray-300 space-y-3 px-4 text-lg">
-                    <li><strong>Respect Others:</strong> Treat all players and staff with respect. Harassment, discrimination, or hate speech will not be tolerated.</li>
-                    <li><strong>No Griefing or Stealing:</strong> Do not destroy or steal from other players' builds or chests. This applies to all game modes unless explicitly stated otherwise.</li>
-                    <li><strong>No Spamming or Excessive Caps:</strong> Keep chat clean and readable. Avoid repetitive messages or using all capital letters.</li>
-                    <li><strong>No Hacking, Cheating, or Exploiting:</strong> Any form of unfair advantage through unauthorized modifications, client hacks, or bug exploitation is strictly forbidden.</li>
-                    <li><strong>No Advertising:</strong> Do not advertise other servers, websites, or products in chat or through builds.</li>
-                    <li><strong>Keep it Family-Friendly:</strong> Maintain appropriate language and content. No NSFW or offensive material.</li>
-                    <li><strong>Follow Staff Instructions:</strong> Server staff are here to ensure a positive environment. Their decisions are final.</li>
-                    <li><strong>Have Fun:</strong> While rules are important, remember the main goal is to enjoy your time on IceMC!</li>
+                    <li data-lang-key="rule1"><strong>Respect Others:</strong> Treat all players and staff with respect. Harassment, discrimination, or hate speech will not be tolerated.</li>
+                    <li data-lang-key="rule2"><strong>No Griefing or Stealing:</strong> Do not destroy or steal from other players' builds or chests. This applies to all game modes unless explicitly stated otherwise.</li>
+                    <li data-lang-key="rule3"><strong>No Spamming or Excessive Caps:</strong> Keep chat clean and readable. Avoid repetitive messages or using all capital letters.</li>
+                    <li data-lang-key="rule4"><strong>No Hacking, Cheating, or Exploiting:</strong> Any form of unfair advantage through unauthorized modifications, client hacks, or bug exploitation is strictly forbidden.</li>
+                    <li data-lang-key="rule5"><strong>No Advertising:</strong> Do not advertise other servers, websites, or products in chat or through builds.</li>
+                    <li data-lang-key="rule6"><strong>Keep it Family-Friendly:</strong> Maintain appropriate language and content. No NSFW or offensive material.</li>
+                    <li data-lang-key="rule7"><strong>Follow Staff Instructions:</strong> Server staff are here to ensure a positive environment. Their decisions are final.</li>
+                    <li data-lang-key="rule8"><strong>Have Fun:</strong> While rules are important, remember the main goal is to enjoy your time on IceMC!</li>
                 </ul>
             </div>
         </section>
 
-        <section class="mb-10 animate-fadeInUp" style="animation-delay: 0.5s;">
-            <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-6 text-center">Survival Specific Rules</h2>
+        <section id="survival-rules" class="mb-10 animate-fadeInUp" style="animation-delay: 0.5s;">
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-6 text-center" data-lang-key="survivalRulesTitle">Survival Specific Rules</h2>
             <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 card-hover-effect">
                 <ul class="list-disc list-inside text-gray-300 space-y-3 px-4 text-lg">
-                    <li><strong>Claim Your Land:</strong> Use land claiming plugins to protect your builds. Unclaimed builds are vulnerable.</li>
-                    <li><strong>No Trapping:</strong> Do not create traps that intentionally kill or harm other players without their consent.</li>
-                    <li><strong>Resource Gathering:</strong> Be mindful of resource depletion. Avoid leaving floating trees or ugly holes.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="animate-fadeInUp" style="animation-delay: 0.7s;">
-            <h2 class="text-3xl md:text-4xl font-bold text-teal-400 mb-6 text-center">Creative Specific Rules</h2>
-            <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 card-hover-effect">
-                <ul class="list-disc list-inside text-gray-300 space-y-3 px-4 text-lg">
-                    <li><strong>Build Appropriately:</strong> All builds must be appropriate for all ages and not offensive.</li>
-                    <li><strong>No Lag Machines:</strong> Do not create contraptions designed to intentionally lag the server.</li>
-                    <li><strong>Respect Plots:</strong> Do not build on or interfere with other players' plots without permission.</li>
+                    <li data-lang-key="survivalRule1"><strong>Claim Your Land:</strong> Use land claiming plugins to protect your builds. Unclaimed builds are vulnerable.</li>
+                    <li data-lang-key="survivalRule2"><strong>No Trapping:</strong> Do not create traps that intentionally kill or harm other players without their consent.</li>
+                    <li data-lang-key="survivalRule3"><strong>Resource Gathering:</strong> Be mindful of resource depletion. Avoid leaving floating trees or ugly holes.</li>
                 </ul>
             </div>
         </section>
@@ -116,9 +167,11 @@
     </main>
 
     <footer class="w-full max-w-4xl text-center mt-12 py-6 border-t border-gray-700 text-gray-400 animate-fadeInUp" style="animation-delay: 0.9s;">
-        <p>&copy; 2025 IceMC. All rights reserved.</p>
-        <p class="mt-2">Play fair, build epic, and have fun!</p>
+        <p data-lang-key="copyright">&copy; 2025 IceMC. All rights reserved.</p>
+        <p class="mt-2" data-lang-key="rulesFooterTagline">Play fair, build epic, and have fun!</p>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
