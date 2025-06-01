@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="loginPageTitle">IceMC Login - Access Your Account</title>
+    <link rel="icon" href="icemc.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Base dark background */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative; /* For absolute positioning of stars */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 2rem; /* Space for footer */
+        }
+
+        /* Starry Background Effect */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1; /* Send to background */
+            background: transparent;
+            animation: twinkle 120s linear infinite;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fadeAndMove 10s infinite ease-in-out;
+        }
+
+        /* Keyframe for background panning */
+        @keyframes backgroundPan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Subtle glow for the main title */
+        .title-glow {
+            text-shadow: 0 0 15px rgba(0, 191, 255, 0.8), 0 0 30px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Fade in and slide up animation for sections */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; /* Hidden by default, revealed by animation */
+        }
+
+        /* Button click effect */
+        .button-pop:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 5px rgba(0, 191, 255, 0.7);
+        }
+
+        /* Card hover effect */
+        .card-hover-effect:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Flag icon styling */
+        .flag-icon {
+            width: 32px; /* Adjust size as needed */
+            height: 24px; /* Adjust size as needed */
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .flag-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Gradient for titles and buttons */
+        .text-gradient-purple-blue {
+            background: linear-gradient(to right, #8B5CF6, #4F46E5); /* Purple to Indigo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background-image: linear-gradient(to right, #8B5CF6, #4F46E5); /* Purple to Indigo */
+        }
+        .btn-gradient:hover {
+            background-image: linear-gradient(to right, #A78BFA, #6366F1); /* Lighter shades on hover */
+        }
+
+        /* Star animation */
+        @keyframes fadeAndMove {
+            0% { opacity: 0; transform: translateY(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(100vh); } /* Stars move downwards */
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 min-h-screen flex flex-col items-center py-8 px-4">
+
+    <div class="stars"></div>
+
+    <header class="w-full max-w-4xl text-center mb-12 animate-fadeInUp" style="animation-delay: 0.1s;">
+        <nav class="mb-8 p-4 bg-gray-800/80 rounded-xl shadow-lg flex justify-center space-x-8 border border-gray-700 relative">
+            <a href="index.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="homeLink">Home</a>
+            <a href="rules.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="rulesLink">Rules</a>
+            <a href="vote.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="voteLink">Vote</a>
+            <a href="login.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="accountLink">Login / Register</a>
+
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex space-x-2">
+                <img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" alt="English Flag" class="flag-icon" id="lang-en" title="Switch to English">
+                <img src="https://flagcdn.com/w20/bg.png" srcset="https://flagcdn.com/w40/bg.png 2x" width="20" alt="Bulgarian Flag" class="flag-icon" id="lang-bg" title="Switch to Bulgarian">
+            </div>
+        </nav>
+
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight title-glow flex items-center justify-center">
+            <img src="icemc.png" alt="IceMC Logo" class="h-12 w-12 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/48x48/000000/FFFFFF?text=Logo';" />
+            <span data-lang-key="loginTitle">Login to</span> <span class="text-gradient-purple-blue">IceMC</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300" data-lang-key="loginHeaderDescription">
+            Access your account to manage your profile and connect with the community!
+        </p>
+    </header>
+
+    <main class="w-full max-w-md bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-gray-700 animate-fadeInUp" style="animation-delay: 0.3s;">
+        <h2 class="text-3xl font-bold text-indigo-400 mb-6 text-center" data-lang-key="loginTitle">Login to Your Account</h2>
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label for="email" class="block text-gray-300 text-sm font-bold mb-2" data-lang-key="emailLabel">Email:</label>
+                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-600 border-gray-500 text-white placeholder-gray-400" placeholder="Your email address" required>
+            </div>
+            <div>
+                <label for="password" class="block text-gray-300 text-sm font-bold mb-2" data-lang-key="passwordLabel">Password:</label>
+                <input type="password" id="password" name="password" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-600 border-gray-500 text-white placeholder-gray-400" placeholder="Your password" required>
+            </div>
+            <p id="loginMessage" class="text-red-400 text-sm hidden" data-lang-key="authErrorMessage"></p>
+            <button type="submit" class="btn-gradient w-full text-white font-bold py-3 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 active:scale-95 button-pop" data-lang-key="loginButton">
+                Login
+            </button>
+            <p class="text-center text-gray-400 text-sm" data-lang-key="dontHaveAccount">
+                Don't have an account? <a href="register.html" class="text-blue-400 hover:underline" data-lang-key="registerHere">Register here</a>.
+            </p>
+        </form>
+    </main>
+
+    <footer class="w-full max-w-4xl text-center mt-12 py-6 border-t border-gray-700 text-gray-400 animate-fadeInUp" style="animation-delay: 0.5s;">
+        <p data-lang-key="copyright">&copy; 2025 IceMC. All rights reserved.</p>
+        <p class="mt-2" data-lang-key="footerTagline">Made with ❤️ for the frosty Minecraft community.</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global variables from the environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Sign in anonymously or with custom token
+        async function initializeFirebaseAuth() {
+            try {
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                    console.log("Firebase: Signed in with custom token.");
+                } else {
+                    await signInAnonymously(auth);
+                    console.log("Firebase: Signed in anonymously.");
+                }
+            } catch (error) {
+                console.error("Firebase Auth initialization error:", error);
+                try {
+                    await signInAnonymously(auth);
+                    console.log("Firebase: Fallback to anonymous sign-in.");
+                } catch (anonError) {
+                    console.error("Firebase: Anonymous sign-in failed:", anonError);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeFirebaseAuth(); // Initialize Firebase Auth
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const loginMessage = document.getElementById('loginMessage');
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function(event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    const email = emailInput.value.trim();
+                    const password = passwordInput.value.trim();
+                    const currentLang = localStorage.getItem('preferredLang') || 'en';
+
+                    loginMessage.classList.add('hidden'); // Hide previous messages
+                    loginMessage.classList.remove('text-green-400', 'text-red-400');
+
+                    if (!email || !password) {
+                        loginMessage.textContent = translations[currentLang].authErrorMessage;
+                        loginMessage.classList.remove('hidden');
+                        loginMessage.classList.add('text-red-400');
+                        return;
+                    }
+
+                    try {
+                        // Sign in with Firebase
+                        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                        const user = userCredential.user;
+
+                        // Fetch username from Firestore
+                        const userProfileRef = doc(db, `artifacts/${appId}/users/${user.uid}/user_profiles`, user.uid);
+                        const userProfileSnap = await getDoc(userProfileRef);
+
+                        let username = null;
+                        if (userProfileSnap.exists()) {
+                            username = userProfileSnap.data().username;
+                        }
+
+                        // Specific password validation for "CargoVrum_" and "Teicheto" usernames
+                        const specialUsers = ["CargoVrum_", "Teicheto"];
+                        if (username && specialUsers.includes(username) && password !== "top1") {
+                            await signOut(auth); // Sign out the user immediately
+                            loginMessage.textContent = translations[currentLang].specificPasswordError;
+                            loginMessage.classList.remove('hidden');
+                            loginMessage.classList.add('text-red-400');
+                            return;
+                        }
+
+                        loginMessage.textContent = translations[currentLang].loginSuccess + (username || email) + "!";
+                        loginMessage.classList.remove('hidden');
+                        loginMessage.classList.add('text-green-400');
+
+                        // Redirect to index.html after a short delay
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+
+                    } catch (error) {
+                        console.error("Firebase Login Error:", error);
+                        let errorMessage = translations[currentLang].invalidCredentials; // Default error message
+
+                        switch (error.code) {
+                            case 'auth/user-not-found':
+                                errorMessage = translations[currentLang].userNotFound;
+                                break;
+                            case 'auth/wrong-password':
+                                errorMessage = translations[currentLang].wrongPassword;
+                                break;
+                            case 'auth/invalid-email':
+                                errorMessage = "Invalid email format."; // Add to translations if needed
+                                break;
+                            default:
+                                errorMessage = error.message; // Fallback to Firebase message
+                                break;
+                        }
+                        loginMessage.textContent = errorMessage;
+                        loginMessage.classList.remove('hidden');
+                        loginMessage.classList.add('text-red-400');
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
