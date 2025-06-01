@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IceMC</title>
+    <title data-lang-key="pageTitle">IceMC - Your Frosty Minecraft Adventure</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -84,21 +84,41 @@
             transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
+
+        /* Flag icon styling */
+        .flag-icon {
+            width: 32px; /* Adjust size as needed */
+            height: 24px; /* Adjust size as needed */
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .flag-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 min-h-screen flex flex-col items-center py-8 px-4">
 
     <header class="w-full max-w-4xl text-center mb-12 animate-fadeInUp" style="animation-delay: 0.1s;">
-        <nav class="mb-8 p-4 bg-gray-800/80 rounded-xl shadow-lg flex justify-center space-x-8 border border-gray-700">
-            <a href="index.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Home</a>
-            <a href="rules.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Rules</a>
-            <a href="vote.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110">Vote</a>
+        <nav class="mb-8 p-4 bg-gray-800/80 rounded-xl shadow-lg flex justify-center space-x-8 border border-gray-700 relative">
+            <a href="index.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="homeLink">Home</a>
+            <a href="rules.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="rulesLink">Rules</a>
+            <a href="vote.html" class="text-xl font-semibold text-blue-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110" data-lang-key="voteLink">Vote</a>
+
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex space-x-2">
+                <img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" alt="English Flag" class="flag-icon" id="lang-en" title="Switch to English">
+                <img src="https://flagcdn.com/w20/bg.png" srcset="https://flagcdn.com/w40/bg.png 2x" width="20" alt="Bulgarian Flag" class="flag-icon" id="lang-bg" title="Switch to Bulgarian">
+            </div>
         </nav>
 
         <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight title-glow">
-            Welcome to <span class="text-blue-400">IceMC</span>
+            <span data-lang-key="welcomeText">Welcome to</span> <span class="text-blue-400">IceMC</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-300">
+        <p class="text-xl md:text-2xl text-gray-300" data-lang-key="headerDescription">
             Your ultimate destination for a frosty Minecraft adventure!
         </p>
     </header>
@@ -106,75 +126,75 @@
     <main class="w-full max-w-4xl bg-gray-800/90 backdrop-blur-sm p-6 md:p-10 rounded-xl shadow-2xl border border-gray-700 transform transition-all duration-500 hover:scale-[1.005]">
 
         <section id="top" class="mb-10 text-center animate-fadeInUp" style="animation-delay: 0.3s;">
-            <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-6">Join Our Server!</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-6" data-lang-key="joinServerTitle">Join Our Server!</h2>
             <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <div class="bg-gray-700 p-4 rounded-lg shadow-inner flex items-center justify-between w-full sm:w-auto animate-pulsate">
                     <span id="serverIp" class="text-2xl md:text-3xl font-mono text-white mr-4 select-all ip-glow">
                         play.icemc.online
                     </span>
-                    <button id="copyIpButton" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 active:scale-95 button-pop">
+                    <button id="copyIpButton" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 active:scale-95 button-pop" data-lang-key="copyIpButton">
                         Copy IP
                     </button>
                 </div>
             </div>
-            <p id="copyMessage" class="text-blue-300 mt-2 opacity-0 transition-opacity duration-300">Copied!</p>
+            <p id="copyMessage" class="text-blue-300 mt-2 opacity-0 transition-opacity duration-300" data-lang-key="copiedMessage">Copied!</p>
         </section>
 
         <section class="mb-10 text-center animate-fadeInUp" style="animation-delay: 0.5s;">
-            <h2 class="text-3xl md:text-4xl font-bold text-green-400 mb-6">Server Status</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-green-400 mb-6" data-lang-key="serverStatusTitle">Server Status</h2>
             <div class="bg-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center space-y-4 border border-gray-600 card-hover-effect">
                 <div class="flex items-center space-x-3">
                     <span id="statusIndicator" class="relative flex h-5 w-5">
                         <span class="ping-animation absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-5 w-5 bg-yellow-500"></span>
                     </span>
-                    <p class="text-3xl text-white">Server is <span id="serverStatusText" class="font-extrabold text-yellow-400">Loading...</span></p>
+                    <p class="text-3xl text-white"><span data-lang-key="serverIs">Server is</span> <span id="serverStatusText" class="font-extrabold text-yellow-400" data-lang-key="loadingStatus">Loading...</span></p>
                 </div>
-                <p class="text-2xl text-gray-300">(<span id="playerCount">--</span>/<span id="maxPlayers">--</span> Players)</p>
+                <p class="text-2xl text-gray-300">(<span id="playerCount">--</span>/<span id="maxPlayers">--</span> <span data-lang-key="playersText">Players</span>)</p>
                 <p id="motd" class="text-lg text-gray-400 italic mt-2"></p>
             </div>
-            <p id="statusError" class="text-red-400 mt-2 hidden">Could not fetch server status. Please try again later.</p>
+            <p id="statusError" class="text-red-400 mt-2 hidden" data-lang-key="statusErrorMessage">Could not fetch server status. Please try again later.</p>
         </section>
 
         <section id="features" class="mb-10 animate-fadeInUp" style="animation-delay: 0.7s;">
-            <h2 class="text-3xl md:text-4xl font-bold text-teal-400 mb-6 text-center">Server Features</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-teal-400 mb-6 text-center" data-lang-key="featuresTitle">Server Features</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 transform transition-all duration-300 card-hover-effect">
-                    <h3 class="text-2xl font-semibold text-white mb-3">❄️ Icy Survival</h3>
-                    <p class="text-gray-300">Brave the frozen biomes, build your stronghold, and thrive in our unique survival world.</p>
+                    <h3 class="text-2xl font-semibold text-white mb-3" data-lang-key="featureSurvivalTitle">❄️ Icy Survival</h3>
+                    <p class="text-gray-300" data-lang-key="featureSurvivalDesc">Brave the frozen biomes, build your stronghold, and thrive in our unique survival world.</p>
                 </div>
                 <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 transform transition-all duration-300 card-hover-effect">
-                    <h3 class="text-2xl font-semibold text-white mb-3">🎨 Creative Frost</h3>
-                    <p class="text-gray-300">Unleash your creativity in a dedicated world with unlimited resources and a snowy canvas.</p>
+                    <h3 class="text-2xl font-semibold text-white mb-3" data-lang-key="featureCreativeTitle">🎨 Creative Frost</h3>
+                    <p class="text-gray-300" data-lang-key="featureCreativeDesc">Unleash your creativity in a dedicated world with unlimited resources and a snowy canvas.</p>
                 </div>
                 <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 transform transition-all duration-300 card-hover-effect">
-                    <h3 class="text-2xl font-semibold text-white mb-3">🎲 Arctic Minigames</h3>
-                    <p class="text-300">Compete in thrilling minigames and participate in frosty server events for cool rewards!</p>
+                    <h3 class="text-2xl font-semibold text-white mb-3" data-lang-key="featureMinigamesTitle">🎲 Arctic Minigames</h3>
+                    <p class="text-300" data-lang-key="featureMinigamesDesc">Compete in thrilling minigames and participate in frosty server events for cool rewards!</p>
                 </div>
                 <div class="bg-gray-700/70 p-6 rounded-lg shadow-lg border border-gray-600 transform transition-all duration-300 card-hover-effect">
-                    <h3 class="text-2xl font-semibold text-white mb-3">🤝 Chilly Community</h3>
-                    <p class="text-gray-300">Join a vibrant and welcoming community of Minecraft enthusiasts. Make new friends!</p>
+                    <h3 class="text-2xl font-semibold text-white mb-3" data-lang-key="featureCommunityTitle">🤝 Chilly Community</h3>
+                    <p class="text-gray-300" data-lang-key="featureCommunityDesc">Join a vibrant and welcoming community of Minecraft enthusiasts. Make new friends!</p>
                 </div>
             </div>
         </section>
 
         <section class="mb-10 animate-fadeInUp" style="animation-delay: 1.1s;">
-            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 mb-6 text-center">How to Join</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 mb-6 text-center" data-lang-key="howToJoinTitle">How to Join</h2>
             <ol class="list-decimal list-inside text-gray-300 space-y-2 px-4">
-                <li>Open Minecraft: Java Edition.</li>
-                <li>Click on 'Multiplayer'.</li>
-                <li>Click on 'Add Server'.</li>
-                <li>Enter "IceMC" as the Server Name.</li>
-                <li>Enter the IP address: <span class="font-bold text-white">play.icemc.online</span></li>
-                <li>Click 'Done' and then 'Join Server'!</li>
+                <li data-lang-key="step1">Open Minecraft: Java Edition.</li>
+                <li data-lang-key="step2">Click on 'Multiplayer'.</li>
+                <li data-lang-key="step3">Click on 'Add Server'.</li>
+                <li data-lang-key="step4">Enter "IceMC" as the Server Name.</li>
+                <li data-lang-key="step5">Enter the IP address: <span class="font-bold text-white">play.icemc.online</span></li>
+                <li data-lang-key="step6">Click 'Done' and then 'Join Server'!</li>
             </ol>
         </section>
 
     </main>
 
     <footer class="w-full max-w-4xl text-center mt-12 py-6 border-t border-gray-700 text-gray-400 animate-fadeInUp" style="animation-delay: 1.5s;">
-        <p>&copy; 2025 IceMC. All rights reserved.</p>
-        <p class="mt-2">Made with ❤️ for the frosty Minecraft community.</p>
+        <p data-lang-key="copyright">&copy; 2025 IceMC. All rights reserved.</p>
+        <p class="mt-2" data-lang-key="footerTagline">Made with ❤️ for the frosty Minecraft community.</p>
     </footer>
 
     <script src="script.js"></script>
