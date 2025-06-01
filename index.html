@@ -38,13 +38,14 @@
         <section class="mb-10 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-green-400 mb-6">Server Status</h2>
             <div class="bg-gray-700 p-6 rounded-lg shadow-lg flex items-center justify-center space-x-4">
-                <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                <span id="statusIndicator" class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
                 </span>
-                <p class="text-2xl text-white">Server is <span class="font-bold text-green-400">Online</span></p>
-                <p class="text-xl text-gray-300">(<span id="playerCount">25</span>/100 Players)</p>
+                <p class="text-2xl text-white">Server is <span id="serverStatusText" class="font-bold text-yellow-400">Checking...</span></p>
+                <p class="text-xl text-gray-300">(<span id="playerCount">--</span>/<span id="maxPlayers">--</span> Players)</p>
             </div>
+            <p id="statusError" class="text-red-400 mt-2 hidden">Could not fetch server status. Please try again later.</p>
         </section>
 
         <section class="mb-10">
@@ -100,6 +101,7 @@
     </footer>
 
     <script>
+        // Copy IP functionality
         document.getElementById('copyIpButton').addEventListener('click', function() {
             const serverIp = document.getElementById('serverIp').textContent;
             const copyMessage = document.getElementById('copyMessage');
@@ -121,15 +123,72 @@
             }, 2000); // Hide after 2 seconds
         });
 
-        // Placeholder for dynamic player count (can be updated via server-side logic)
-        // setInterval(() => {
-        //     const playerCountElement = document.getElementById('playerCount');
-        //     const currentPlayers = parseInt(playerCountElement.textContent);
-        //     const maxPlayers = 100;
-        //     // Simulate player count changing
-        //     const newPlayers = Math.floor(Math.random() * (maxPlayers / 2)) + 10; // Between 10 and 60
-        //     playerCountElement.textContent = newPlayers;
-        // }, 10000); // Update every 10 seconds (for demonstration)
+        // Function to fetch and update server status
+        async function fetchServerStatus() {
+            const serverIp = "play.icemc.online"; // Your server IP
+            const apiUrl = `https://api.mcserverstatus.com/v2/status?ip=${serverIp}`; // Placeholder API URL
+
+            const statusIndicator = document.getElementById('statusIndicator');
+            const serverStatusText = document.getElementById('serverStatusText');
+            const playerCount = document.getElementById('playerCount');
+            const maxPlayers = document.getElementById('maxPlayers');
+            const statusError = document.getElementById('statusError');
+
+            // Set initial checking state
+            serverStatusText.textContent = 'Checking...';
+            serverStatusText.classList.remove('text-green-400', 'text-red-400');
+            serverStatusText.classList.add('text-yellow-400');
+            statusIndicator.innerHTML = `
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+            `;
+            statusError.classList.add('hidden'); // Hide any previous error
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                if (data.online) {
+                    serverStatusText.textContent = 'Online';
+                    serverStatusText.classList.remove('text-yellow-400', 'text-red-400');
+                    serverStatusText.classList.add('text-green-400');
+                    playerCount.textContent = data.players.online;
+                    maxPlayers.textContent = data.players.max;
+                    statusIndicator.innerHTML = `
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    `;
+                } else {
+                    serverStatusText.textContent = 'Offline';
+                    serverStatusText.classList.remove('text-yellow-400', 'text-green-400');
+                    serverStatusText.classList.add('text-red-400');
+                    playerCount.textContent = '--';
+                    maxPlayers.textContent = '--';
+                    statusIndicator.innerHTML = `
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    `;
+                }
+            } catch (error) {
+                console.error("Error fetching server status:", error);
+                serverStatusText.textContent = 'Error';
+                serverStatusText.classList.remove('text-yellow-400', 'text-green-400');
+                serverStatusText.classList.add('text-red-400');
+                playerCount.textContent = '--';
+                maxPlayers.textContent = '--';
+                statusIndicator.innerHTML = `
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                `;
+                statusError.classList.remove('hidden'); // Show error message
+            }
+        }
+
+        // Fetch status on page load
+        document.addEventListener('DOMContentLoaded', fetchServerStatus);
+        // Optionally, refresh status every 30 seconds
+        setInterval(fetchServerStatus, 30000);
     </script>
 
 </body>
