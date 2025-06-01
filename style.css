@@ -1,1 +1,28 @@
-
+/* Custom styles for the Inter font */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Subtle background pattern */
+    background-image: radial-gradient(at 50% 0%, rgba(25, 25, 112, 0.2) 0%, transparent 70%),
+                      radial-gradient(at 0% 100%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+                      radial-gradient(at 100% 100%, rgba(0, 0, 139, 0.1) 0%, transparent 50%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+/* Basic styling for the copy button feedback */
+.copy-success {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+/* Keyframe for subtle pulsate effect on IP */
+@keyframes pulsate {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+.animate-pulsate {
+    animation: pulsate 2s infinite ease-in-out;
+}
+/* Subtle glow for the main title */
+.title-glow {
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.6), 0 0 20px rgba(0, 191, 255, 0.4);
+}
