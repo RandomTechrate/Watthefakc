@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IceMC - Your Frosty Minecraft Adventure</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -37,15 +38,16 @@
 
         <section class="mb-10 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-green-400 mb-6">Server Status</h2>
-            <div class="bg-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-lg shadow-lg flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 border border-gray-600">
+            <div class="bg-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center space-y-4 border border-gray-600">
                 <div class="flex items-center space-x-3">
                     <span id="statusIndicator" class="relative flex h-5 w-5">
                         <span class="ping-animation absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-5 w-5 bg-yellow-500"></span>
                     </span>
-                    <p class="text-3xl text-white">Server is <span id="serverStatusText" class="font-extrabold text-yellow-400">Checking...</span></p>
+                    <p class="text-3xl text-white">Server is <span id="serverStatusText" class="font-extrabold text-yellow-400">Loading...</span></p>
                 </div>
                 <p class="text-2xl text-gray-300">(<span id="playerCount">--</span>/<span id="maxPlayers">--</span> Players)</p>
+                <p id="motd" class="text-lg text-gray-400 italic mt-2"></p>
             </div>
             <p id="statusError" class="text-red-400 mt-2 hidden">Could not fetch server status. Please try again later.</p>
         </section>
@@ -128,20 +130,23 @@
         // Function to fetch and update server status
         async function fetchServerStatus() {
             const serverIp = "play.icemc.online"; // Your server IP
-            const serverPort = "25565"; // Standard Minecraft port
-            // Updated API URL for mcstatus.io
-            const apiUrl = `https://api.mcstatus.io/v2/status/java/${serverIp}:${serverPort}`;
+            // Updated API URL for mcsrvstat.us
+            const apiUrl = `https://api.mcsrvstat.us/3/${serverIp}`;
 
             const statusIndicator = document.getElementById('statusIndicator');
             const serverStatusText = document.getElementById('serverStatusText');
             const playerCount = document.getElementById('playerCount');
             const maxPlayers = document.getElementById('maxPlayers');
+            const motdElement = document.getElementById('motd');
             const statusError = document.getElementById('statusError');
 
-            // Set initial checking state
-            serverStatusText.textContent = 'Checking...';
+            // Set initial loading state
+            serverStatusText.textContent = 'Loading...';
             serverStatusText.classList.remove('text-green-400', 'text-red-400');
             serverStatusText.classList.add('text-yellow-400');
+            playerCount.textContent = '--';
+            maxPlayers.textContent = '--';
+            motdElement.textContent = ''; // Clear previous MOTD
             statusIndicator.innerHTML = `
                 <span class="ping-animation absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-5 w-5 bg-yellow-500"></span>
@@ -159,8 +164,11 @@
                     serverStatusText.textContent = 'Online';
                     serverStatusText.classList.remove('text-yellow-400', 'text-red-400');
                     serverStatusText.classList.add('text-green-400');
-                    playerCount.textContent = data.players.online;
-                    maxPlayers.textContent = data.players.max;
+                    playerCount.textContent = data.players ? data.players.online : 'N/A';
+                    maxPlayers.textContent = data.players ? data.players.max : 'N/A';
+                    if (data.motd && data.motd.clean && data.motd.clean.length > 0) {
+                        motdElement.textContent = data.motd.clean.join(' | '); // Join MOTD lines
+                    }
                     statusIndicator.innerHTML = `
                         <span class="ping-animation absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-5 w-5 bg-green-500"></span>
@@ -171,6 +179,7 @@
                     serverStatusText.classList.add('text-red-400');
                     playerCount.textContent = '--';
                     maxPlayers.textContent = '--';
+                    motdElement.textContent = 'Server is currently unreachable.';
                     statusIndicator.innerHTML = `
                         <span class="relative inline-flex rounded-full h-5 w-5 bg-red-500"></span>
                     `;
@@ -182,6 +191,7 @@
                 serverStatusText.classList.add('text-red-400');
                 playerCount.textContent = '--';
                 maxPlayers.textContent = '--';
+                motdElement.textContent = 'Failed to load server status.';
                 statusIndicator.innerHTML = `
                     <span class="relative inline-flex rounded-full h-5 w-5 bg-red-500"></span>
                 `;
@@ -191,7 +201,7 @@
 
         // Fetch status on page load
         document.addEventListener('DOMContentLoaded', fetchServerStatus);
-        // Optionally, refresh status every 30 seconds
+        // Refresh status every 30 seconds
         setInterval(fetchServerStatus, 30000);
     </script>
 
