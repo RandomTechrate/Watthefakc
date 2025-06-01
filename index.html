@@ -1,36 +1,325 @@
 
-<!doctype html>
-<html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>New Tab</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MazenMC - Official Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-      body {
-        background: #353535;
-        margin: 0;
-      }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease-in-out;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            background: rgba(20, 20, 20, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav a {
+            color: #00c6ff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .nav a:hover {
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff0000, #ff7300);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.7);
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            background: rgba(10, 10, 10, 0.9);
+            padding: 8px 0;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+                                        
+.discord-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #5865F2;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 15px;
+}
 
-      #backgroundImage {
-        border: none;
-        height: 100%;
-        pointer-events: none;
-        position: fixed;
-        top: 0;
-        visibility: hidden;
-        width: 100%;
-      }
+.discord-button img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
 
-      [show-background-image] #backgroundImage {
-        visibility: visible;
-      }
+.discord-button:hover {
+    background: #4752C4;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.site-button, .ip-button, .host-button, .vote-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.site-button {
+    background: #00c6ff;
+    color: white;
+}
+.site-button:hover {
+    background: #0099cc;
+    transform: scale(1.05);
+}
+
+.ip-button {
+    background: #ffcc00;
+    color: black;
+    border: none;
+}
+.ip-button:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+}
+
+.host-button {
+    background: #ff5733;
+    color: white;
+}
+.host-button:hover {
+    background: #cc4526;
+    transform: scale(1.05);
+}
+
+.vote-button {
+    background: #4CAF50;
+    color: white;
+}
+.vote-button:hover {
+    background: #3d8b40;
+    transform: scale(1.05);
+}
+.mazenhost-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #111, #222);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.mazenhost-card {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.mazenhost-logo {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+.mazenhost-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background: #ff5733;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mazenhost-button:hover {
+    background: #cc4526;
+    transform: scale(1.05);
+}
+
     </style>
-  </head>
-  <body>
-    <iframe id="backgroundImage" src="chrome-untrusted://new-tab-page/custom_background_image?url=https%3A%2F%2Flh5.googleusercontent.com%2Fproxy%2FddabKN_8rSaq-Yn-X24pORJpEJZy8QdHR7CBl4cnnkBjqaBFcOYnazG-e5NgA54kpLzLoUKcd_F-4C-z-GxFyDFAmYa9lxOk5x0jzg%3Dw3840-h2160-p-k-no-nd-mv"></iframe>
-    <ntp-app></ntp-app>
-    <script type="module" src="new_tab_page.js"></script>
-    <link rel="stylesheet" href="chrome://resources/css/text_defaults_md.css">
-    <link rel="stylesheet" href="chrome://theme/colors.css?sets=ui,chrome">
-    <link rel="stylesheet" href="shared_vars.css">
-  </body>
+</head>
+<body>
+    <div class="header">MazenMC - Official Website</div>
+    <div class="nav">
+        <a href="">Home</a>
+        <a href="server.html">About the Server</a>
+        <a href="stats.html">Statistics</a>
+        <a href="map.html">Online Map</a>
+        <a href="shop.html">Shop</a>
+        <a href="news.html">News</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="staff.html">Staff</a>
+    </div>
+<div class="container">
+    <h1>Welcome to MazenMC</h1>
+    <p>🌍 MazenMC is a Minecraft server created for true fans of the game! Expect unique mini-games, exciting challenges, and an active community.</p>
+    
+    <h2>⚔️ Gameplay and Modes</h2>
+    <p>🔹 Survival - Classic mode with economy, clans, and custom mechanics.<br>
+       🔹 ElytraPvP - Classic mode with Elytra for PvP, clans, and custom mechanics.<br>
+       🔹 Minigames (Coming Soon) - Fight other players and show off your skills!<br>
+       🔹 Events - Participate in special events with rewards! 🎁</p>
+    
+    <h2>💎 Why Choose Us?</h2>
+    <p>✔️ Lag-free hosting for smooth gameplay.<br>
+       ✔️ 24/7 active support.<br>
+       ✔️ Professional team and fair gameplay.<br>
+       ✔️ Frequent updates with new features!</p>
+
+    <h2>📌 Important Links</h2>
+    <p>🌐 Website: <a href="https://www.mazenmc.xyz" target="_blank" style="color:#00c6ff;">mazenmc.xyz</a><br>
+       🛍️ Shop: <a href="shop.html" style="color:#00c6ff;">Visit the Shop</a><br>
+       📊 Statistics: <a href="stats.html" style="color:#00c6ff;">Player Statistics</a><br>
+       🗺️ Online Map: <a href="map.html" style="color:#00c6ff;">Explore the World</a></p>
+
+    <a class="btn" href="shop.html">Visit the Shop</a>
+<a href="https://discord.mazenmc.xyz" class="discord-button" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord Logo">
+    Join us on Discord
+</a>
+<div class="buttons-container">
+    <a href="https://store.mazenmc.xyz" class="site-button" target="_blank">🌍 Official Store Site</a>
+    
+    <button class="ip-button" onclick="copyIP()">🎮 Copy IP</button>
+    
+    <a href="https://mazenhost.com" class="host-button" target="_blank">🖥️ MazenHost</a>
+    
+    <a href="https://votes.mazenmc.xyz" class="vote-button" target="_blank">🗳️ Vote for Us</a>
+</div>
+<div class="mazenhost-section">
+    <div class="mazenhost-card">
+        <img src="images/mazenmc.png" alt="MazenHost" class="mazenhost-logo">
+        <h2>🔗 MazenHost - Official Partner</h2>
+        <p>
+            MazenHost is a leading hosting company providing high-performance Minecraft servers.
+            Thanks to them, MazenMC runs lag-free and offers a stable connection for players.
+        </p>
+        <p>
+            🚀 DDOS protection, 24/7 support, and low ping<br>
+            🎮 Optimized servers for Minecraft<br>
+            💡 The perfect choice for every gamer
+        </p>
+        <a href="https://mazenhost.com" target="_blank" class="mazenhost-button">Visit MazenHost</a>
+    </div>
+</div>
+</div>
+
+    <div class="footer">&copy; 2025 MazenMC. All rights reserved.</div>
+<script>
+    function copyIP() {
+        const ip = "mazenmc.xyz"; // Твоето реално IP
+
+        // Създаваме временен input елемент
+        const tempInput = document.createElement("input");
+        tempInput.value = ip;
+        document.body.appendChild(tempInput);
+        
+        // Избираме текста и копираме
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999); // За мобилни устройства
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+
+        // Показваме съобщение за успех
+        const copyButton = document.querySelector(".ip-button");
+        copyButton.textContent = "✅ IP копирано!";
+        setTimeout(() => {
+            copyButton.textContent = "🎮 Копирай IP";
+        }, 2000);
+    }
+</script>
+</script>
+</body>
 </html>
