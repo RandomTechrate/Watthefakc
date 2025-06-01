@@ -48,6 +48,11 @@ const translations = {
         authErrorMessage: "Please fill in all fields.",
         loginButton: "Login",
         registerButton: "Register",
+        loginSuccess: "Login successful for ",
+        registerSuccess: "Registration successful for ",
+        invalidCredentials: "Invalid username or password.",
+        specificPasswordError: "Incorrect password for this username.",
+
 
         // Rules.html specific translations
         rulesPageTitle: "IceMC Rules - Play Fair, Have Fun!",
@@ -130,6 +135,10 @@ const translations = {
         authErrorMessage: "Моля, попълнете всички полета.",
         loginButton: "Вход",
         registerButton: "Регистрация",
+        loginSuccess: "Успешен вход за ",
+        registerSuccess: "Успешна регистрация за ",
+        invalidCredentials: "Невалидно потребителско име или парола.",
+        specificPasswordError: "Грешна парола за това потребителско име.",
 
         // Rules.html specific translations
         rulesPageTitle: "IceMC Правила - Играйте Честно, Забавлявайте се!",
@@ -285,49 +294,8 @@ async function fetchServerStatus() {
     }
 }
 
-// Function to handle form submission (Login/Register)
-document.getElementById('authForm')?.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    const usernameInput = document.getElementById('username');
-    const passwordInput = document.getElementById('password');
-    const authMessage = document.getElementById('authMessage');
-
-    const username = usernameInput?.value.trim();
-    const password = passwordInput?.value.trim();
-
-    if (!username || !password) {
-        if (authMessage) {
-            authMessage.textContent = translations[localStorage.getItem('preferredLang') || 'en'].authErrorMessage;
-            authMessage.classList.remove('hidden');
-        }
-        return;
-    } else {
-        if (authMessage) {
-            authMessage.classList.add('hidden');
-        }
-    }
-
-    // This is where you would integrate with a backend authentication system (e.g., Firebase, custom API)
-    // For now, we'll just simulate a successful action.
-    const isRegister = event.submitter?.id === 'registerButton';
-    const action = isRegister ? 'Register' : 'Login';
-
-    console.log(`${action} attempt for username: ${username}, password: ${password}`);
-
-    // Simulate API call
-    setTimeout(() => {
-        if (authMessage) {
-            authMessage.classList.remove('hidden', 'text-red-400');
-            authMessage.classList.add('text-green-400');
-            authMessage.textContent = `${action} successful for ${username}! (Simulated)`;
-        }
-        // Clear form fields
-        if (usernameInput) usernameInput.value = '';
-        if (passwordInput) passwordInput.value = '';
-    }, 1000);
-});
-
+// Function to handle form submission (Login/Register) - Now moved to specific pages
+// This function is removed from here as it will be implemented on login.html and register.html
 
 // Function to create and append stars
 function createStars() {
